@@ -1,14 +1,14 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+//! # proto
+//! Rust definitions for microstack gRPC protocol.
+
+pub use tonic;
+
+pub mod health {
+	//! Health service definitions.
+	tonic::include_proto!("grpc.health.v1");
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub mod version {
+	//! Version service definitions.
+	tonic::include_proto!("microstack.version");
 }
