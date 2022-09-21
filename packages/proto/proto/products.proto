@@ -1,0 +1,23 @@
+// Protocol package to ensure consistent protocol version across services.
+syntax = "proto3";
+package microstack.products;
+
+import "google/protobuf/empty.proto";
+
+// A product.
+message Product {
+	string id = 1;
+	string name = 2;
+	string description = 3;
+}
+
+// A list of products.
+message ListProductsResponse {
+	repeated Product products = 1;
+}
+
+// Handles version requests.
+service ProductsService {
+	// Returns a list of products.
+	rpc ListProducts(google.protobuf.Empty) returns (ListProductsResponse);
+}

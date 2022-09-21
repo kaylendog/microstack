@@ -2,20 +2,15 @@
 syntax = "proto3";
 package microstack.version;
 
-// Version request message.
-message VersionRequest {
-	// The version of the protocol this client supports.
-	string version = 1;
-}
+import "google/protobuf/empty.proto";
 
-message VersionResponse {
+// The response payload of the `GetVersion` RPC.
+message GetVersionResponse {
 	// The version of the protocol this server supports.
 	string version = 1;
 }
 
 // Handles version requests.
 service VersionService {
-	// Returns the version of the protocol this server supports. Errors if the
-	// version is not supported.
-	rpc Validate(VersionRequest) returns (VersionResponse);
+	rpc GetVersion(google.protobuf.Empty) returns (GetVersionResponse);
 }
