@@ -1,0 +1,21 @@
+// Protocol package to ensure consistent protocol version across services.
+syntax = "proto3";
+package microstack.version;
+
+// Version request message.
+message VersionRequest {
+	// The version of the protocol this client supports.
+	string version = 1;
+}
+
+message VersionResponse {
+	// The version of the protocol this server supports.
+	string version = 1;
+}
+
+// Handles version requests.
+service VersionService {
+	// Returns the version of the protocol this server supports. Errors if the
+	// version is not supported.
+	rpc Validate(VersionRequest) returns (VersionResponse);
+}

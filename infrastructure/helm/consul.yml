@@ -1,0 +1,9 @@
+global:
+    name: consul
+    enabled: true
+server:
+  affinity: null
+connectInject:
+    enabled: true
+controller:
+    enabled: true

@@ -1,0 +1,14 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: api
+spec:
+  destination:
+    name: api
+  sources:
+    - name: admin-dashboard
+      permissions:
+        - action: allow
+          http:
+            pathPrefix: /v2
+            methods: ['GET', 'PUT', 'POST', 'DELETE', 'HEAD']
